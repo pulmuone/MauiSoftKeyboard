@@ -79,11 +79,14 @@ public partial class NewPage1 : ContentPage
                 {
                     _entry.EnableKeyboard = false;
                     _entry.Unfocus();
+                    _entry.Focus();
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
-                    _entry.EnableKeyboard = false;
                     _entry.Unfocus();
+                    _entry.Focus();
+                    _entry.EnableKeyboard = false;
+                    
                 }
             }
             else
@@ -91,14 +94,14 @@ public partial class NewPage1 : ContentPage
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     _entry.EnableKeyboard = true;
-                    //_entry.Unfocus();
+                    _entry.Unfocus();
                     _entry.Focus();
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
-                    //_entry.Unfocus();
-                    _entry.EnableKeyboard = true;
+                    _entry.Unfocus();
                     _entry.Focus();
+                    _entry.EnableKeyboard = true;                    
                 }
             }
         }

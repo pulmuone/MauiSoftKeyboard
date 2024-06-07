@@ -54,20 +54,19 @@ public partial class NewPage2 : ContentPage
     {
         if (this._entry != null)
         {
-            if (this.IsSoftInputShowing)
+            if (_entry.IsSoftInputShowing())
             {
                 //바인딩된 IsEnableKeyboard이 모두 동작하기 때문에 문제가 된다
-                this.vm.IsEnableKeyboard = false;
-
                 _entry.Unfocus();
                 _entry.Focus();
+                this.vm.IsEnableKeyboard = false;                
             }
             else
             {
-                this.vm.IsEnableKeyboard = true;
-
                 _entry.Unfocus();
                 _entry.Focus();
+                this.vm.IsEnableKeyboard = true;
+                
             }
         }
     }
