@@ -34,7 +34,7 @@ namespace MauiSoftKeyboard.Droid.Effects
                     return;
                 }
 
-                editText.ShowSoftInputOnFocus = KeyboardEffect.GetEnableKeyboard(Element);
+                 editText.ShowSoftInputOnFocus = KeyboardEffect.GetEnableKeyboard(Element);
 
                 if (!editText.ShowSoftInputOnFocus)
                 {
@@ -90,7 +90,7 @@ namespace MauiSoftKeyboard.Droid.Effects
                 editText.FocusChange -= HideMethod;
 
                 var imm = (InputMethodManager)Platform.CurrentActivity?.GetSystemService(Context.InputMethodService);
-                imm?.ShowSoftInput(Control, ShowFlags.Forced);
+                imm?.ShowSoftInput(Control, ShowFlags.Implicit);
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
                 if (requestFocus)
                 {

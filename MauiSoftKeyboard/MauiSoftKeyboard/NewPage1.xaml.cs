@@ -1,4 +1,7 @@
 ﻿using MauiSoftKeyboard.Controls;
+using CommunityToolkit.Maui.Core.Platform;
+using Microsoft.Maui.Platform;
+using System.Diagnostics;
 
 namespace MauiSoftKeyboard;
 
@@ -68,19 +71,36 @@ public partial class NewPage1 : ContentPage
     {
         if (this._entry != null)
         {
-            if (this.IsSoftInputShowing)
+            //if (this.IsSoftInputShowing)
+            //if(this._entry.IsSoftKeyboardShowing())
+            if (_entry.IsSoftInputShowing())
             {
-                _entry.EnableKeyboard = false;
-
-                _entry.Unfocus();
-                _entry.Focus();
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    _entry.EnableKeyboard = false;
+                    _entry.Unfocus();
+                    //_entry.Focus();
+                }
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
+                {
+                    _entry.EnableKeyboard = false;
+                    _entry.Unfocus();
+                }
             }
             else
             {
-                _entry.EnableKeyboard = true;
-
-                _entry.Unfocus();
-                _entry.Focus();
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    _entry.EnableKeyboard = true;
+                    //_entry.Unfocus();
+                    _entry.Focus();
+                }
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
+                {
+                    //_entry.Unfocus();
+                    _entry.EnableKeyboard = true;
+                    _entry.Focus();
+                }
             }
         }
     }
