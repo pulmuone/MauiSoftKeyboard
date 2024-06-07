@@ -66,10 +66,9 @@ public partial class NewPage1 : ContentPage
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
+                    _entry.EnableKeyboard = false;
                     _entry.Unfocus();
                     _entry.Focus();
-                    _entry.EnableKeyboard = false;
-                    
                 }
             }
             else
@@ -82,9 +81,10 @@ public partial class NewPage1 : ContentPage
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
+                    _entry.EnableKeyboard = true;
                     _entry.Unfocus();
                     _entry.Focus();
-                    _entry.EnableKeyboard = true;                    
+
                 }
             }
         }

@@ -8,10 +8,10 @@ public partial class NewPage2 : ContentPage
 
     Entry _entry;
 
-	public NewPage2()
-	{
-		InitializeComponent();
-	}
+    public NewPage2()
+    {
+        InitializeComponent();
+    }
 
     protected override async void OnAppearing()
     {
@@ -55,9 +55,9 @@ public partial class NewPage2 : ContentPage
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
+                    this.vm.IsEnableKeyboard = false;
                     _entry.Unfocus();
                     _entry.Focus();
-                    this.vm.IsEnableKeyboard = false;
                 }
             }
             else
@@ -70,9 +70,9 @@ public partial class NewPage2 : ContentPage
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
+                    this.vm.IsEnableKeyboard = true;
                     _entry.Unfocus();
                     _entry.Focus();
-                    this.vm.IsEnableKeyboard = true;
                 }
             }
         }
