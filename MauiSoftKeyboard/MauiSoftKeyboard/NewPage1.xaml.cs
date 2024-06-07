@@ -79,7 +79,6 @@ public partial class NewPage1 : ContentPage
                 {
                     _entry.EnableKeyboard = false;
                     _entry.Unfocus();
-                    //_entry.Focus();
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
