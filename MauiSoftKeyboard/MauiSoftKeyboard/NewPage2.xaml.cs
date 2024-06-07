@@ -1,4 +1,6 @@
-﻿namespace MauiSoftKeyboard;
+﻿using Microsoft.Maui;
+
+namespace MauiSoftKeyboard;
 
 public partial class NewPage2 : ContentPage
 {
@@ -11,29 +13,19 @@ public partial class NewPage2 : ContentPage
 		InitializeComponent();
 	}
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
 
-        SoftKeyboard.Current.VisibilityChanged += Current_VisibilityChanged;
-
-        //await Task.Delay(500); // 250이나 300정도해도 작동
-        //this.Entry1.Focus();
-        //this._entry = this.Entry1;
+        await Task.Delay(300); // 250이나 300정도해도 작동
+        this.Entry1.Focus();
     }
 
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
-
-        SoftKeyboard.Current.VisibilityChanged -= Current_VisibilityChanged;
     }
 
-    private void Current_VisibilityChanged(SoftKeyboardEventArgs e)
-    {
-        IsSoftInputShowing = e.IsVisible;
-        //LabelMessage.Text = $"KeyBoard is visible : {(e.IsVisible ? "Yes" : "No")}";
-    }
 
     void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
     {
@@ -56,17 +48,32 @@ public partial class NewPage2 : ContentPage
         {
             if (_entry.IsSoftInputShowing())
             {
-                //바인딩된 IsEnableKeyboard이 모두 동작하기 때문에 문제가 된다
-                _entry.Unfocus();
-                _entry.Focus();
-                this.vm.IsEnableKeyboard = false;                
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    this.vm.IsEnableKeyboard = false;
+                    _entry.Unfocus();
+                }
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
+                {
+                    _entry.Unfocus();
+                    _entry.Focus();
+                    this.vm.IsEnableKeyboard = false;
+                }
             }
             else
             {
-                _entry.Unfocus();
-                _entry.Focus();
-                this.vm.IsEnableKeyboard = true;
-                
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    this.vm.IsEnableKeyboard = true;
+                    _entry.Focus();
+
+                }
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
+                {
+                    _entry.Unfocus();
+                    _entry.Focus();
+                    this.vm.IsEnableKeyboard = true;
+                }
             }
         }
     }

@@ -10,12 +10,12 @@
     <StackLayout Orientation="Vertical" Spacing="20">
 
        <Button x:Name="NonMvvm"
-               Text="Non-MVVM(정상 작동)"
+               Text="Non-MVVM"
                Clicked="NonMvvm_Clicked"/>
 
         
        <Button x:Name="Mvvm"
-               Text="MVVM(운영에 문제가 있음)"
+               Text="MVVM"
                Clicked="Mvvm_Clicked"/>
 
     </StackLayout>

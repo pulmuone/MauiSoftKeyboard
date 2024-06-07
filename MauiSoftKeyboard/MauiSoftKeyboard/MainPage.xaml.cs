@@ -7,7 +7,6 @@ namespace MauiSoftKeyboard;
 
 public partial class MainPage : ContentPage
 {
-    ExtendedEntry _entry;
 
     public MainPage()
     {

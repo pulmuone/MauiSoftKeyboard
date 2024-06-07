@@ -54,7 +54,6 @@ namespace MauiSoftKeyboard.iOS.Effects
                 nativeTextField.InputView = null;
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
 
-                //포커스라기 보다는 키보드 show/hide 개념.
                 if (requestFocus)
                 {
                     //nativeTextField.UserInteractionEnabled = true;

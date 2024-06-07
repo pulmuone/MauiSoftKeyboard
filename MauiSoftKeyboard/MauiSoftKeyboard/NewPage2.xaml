@@ -33,7 +33,7 @@
 						<Entry x:Name="Entry1"
                                Focused="Entry1_Focused"
 							   effects:KeyboardEffect.EnableKeyboard="{Binding IsEnableKeyboard, Mode=TwoWay}" 
-							   effects:KeyboardEffect.RequestFocus="True">
+							   effects:KeyboardEffect.RequestFocus="False">
 							<Entry.Effects>
 								<effects:KeyboardEnableEffect />
 							</Entry.Effects>

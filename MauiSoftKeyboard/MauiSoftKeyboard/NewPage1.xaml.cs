@@ -7,7 +7,6 @@ namespace MauiSoftKeyboard;
 
 public partial class NewPage1 : ContentPage
 {
-    bool IsSoftInputShowing;
     ExtendedEntry _entry;
 
     public NewPage1()
@@ -15,32 +14,19 @@ public partial class NewPage1 : ContentPage
         InitializeComponent();
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
 
-        SoftKeyboard.Current.VisibilityChanged += Current_VisibilityChanged;
-
-        //await Task.Delay(500); // 250이나 300정도해도 작동
-
-        //this.Entry1.Focus();
-
-        //this._entry = this.Entry1;
+        await Task.Delay(300); // 250이나 300정도해도 작동
+        this.Entry1.Focus();
     }
 
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
-
-        SoftKeyboard.Current.VisibilityChanged -= Current_VisibilityChanged;
     }
 
-
-    private void Current_VisibilityChanged(SoftKeyboardEventArgs e)
-    {
-        IsSoftInputShowing = e.IsVisible;
-        //LabelMessage.Text = $"KeyBoard is visible : {(e.IsVisible ? "Yes" : "No")}";
-    }
 
     void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
     {
@@ -71,15 +57,12 @@ public partial class NewPage1 : ContentPage
     {
         if (this._entry != null)
         {
-            //if (this.IsSoftInputShowing)
-            //if(this._entry.IsSoftKeyboardShowing())
             if (_entry.IsSoftInputShowing())
             {
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     _entry.EnableKeyboard = false;
                     _entry.Unfocus();
-                    _entry.Focus();
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
@@ -94,8 +77,8 @@ public partial class NewPage1 : ContentPage
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     _entry.EnableKeyboard = true;
-                    _entry.Unfocus();
                     _entry.Focus();
+
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {

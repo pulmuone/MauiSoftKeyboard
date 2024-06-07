@@ -10,28 +10,7 @@ public class AppDelegate : MauiUIApplicationDelegate
 
     public override bool FinishedLaunching(UIApplication app, NSDictionary options)
     {
-        try
-        {
-            UIKeyboard.Notifications.ObserveDidShow(OnKeyboardDidShow);
-            UIKeyboard.Notifications.ObserveDidHide(OnKeyboardDidHide);
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine(ex);
-        }
-
+        
         return base.FinishedLaunching(app, options);
-    }
-
-
-
-    private void OnKeyboardDidHide(object sender, UIKeyboardEventArgs e)
-    {
-        SoftKeyboard.Current.InvokeVisibilityChanged(false);
-    }
-
-    private void OnKeyboardDidShow(object sender, UIKeyboardEventArgs e)
-    {
-        SoftKeyboard.Current.InvokeVisibilityChanged(true);
     }
 }
