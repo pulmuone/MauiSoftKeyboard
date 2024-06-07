@@ -1,14 +1,12 @@
 ﻿using MauiSoftKeyboard.Effects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UIKit;
 using Microsoft.Maui.Controls.Platform;
+using CoreFoundation;
 
 namespace MauiSoftKeyboard.iOS.Effects
 {
+    [Foundation.Preserve(AllMembers = true)]
     public class KeyboardEnableEffect : PlatformEffect
     {
         protected override void OnAttached()
@@ -17,6 +15,7 @@ namespace MauiSoftKeyboard.iOS.Effects
             {
                 if (!(Control is UITextField nativeTextField) || KeyboardEffect.GetEnableKeyboard(Element))
                 {
+
                     return;
                 }
 
@@ -28,7 +27,13 @@ namespace MauiSoftKeyboard.iOS.Effects
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
                 if (requestFocus)
                 {
-                    nativeTextField.BecomeFirstResponder();
+                    DispatchQueue.MainQueue.DispatchAsync(() =>
+                    {
+                        //nativeTextField.UserInteractionEnabled = true;
+                         nativeTextField.BecomeFirstResponder(); //ShowKeyboard
+                        //nativeTextField.ResignFirstResponder(); //HideKeyboard
+                    });
+
                 }
             }
             catch (Exception ex)
@@ -48,9 +53,13 @@ namespace MauiSoftKeyboard.iOS.Effects
 
                 nativeTextField.InputView = null;
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
+
+                //포커스라기 보다는 키보드 show/hide 개념.
                 if (requestFocus)
                 {
-                    nativeTextField.BecomeFirstResponder();
+                    //nativeTextField.UserInteractionEnabled = true;
+                    nativeTextField.BecomeFirstResponder(); //ShowKeyboard
+                    //nativeTextField.ResignFirstResponder(); //HideKeyboard, 포커스도 아웃됨.
                 }
             }
             catch (Exception ex)

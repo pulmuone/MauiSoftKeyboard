@@ -1,104 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiSoftKeyboard.MainPage"
+             xmlns:vm="clr-namespace:MauiSoftKeyboard.ViewModels"
              xmlns:controls="clr-namespace:MauiSoftKeyboard.Controls"             
-             xmlns:effects="clr-namespace:MauiSoftKeyboard.Effects">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Order="Primary" 
-                     Priority="0" 
-                     Text="[Keyboard On/Off]"
-                     Clicked="ToolbarItem_Clicked"/>
-
-    </ContentPage.ToolbarItems>
-
-    
-    <Grid RowDefinitions="50, 50, 50, 50"
-          ColumnDefinitions="*, 150"
-          Margin="0,10,0,0"
-          RowSpacing="10">
-    
-        <Grid Grid.Row="0" Grid.Column="0">            
-            <controls:ExtendedEntry x:Name="Entry1"
-                                    Focused="Entry1_Focused"
-                                    Unfocused="entry_Unfocused"
-                                    effects:KeyboardEffect.EnableKeyboard="{Binding Source={x:Reference Entry1}, Path=EnableKeyboard}"
-                                    effects:KeyboardEffect.RequestFocus="True">
-                <Entry.Effects>
-                    <effects:KeyboardEnableEffect />
-                </Entry.Effects>
-            </controls:ExtendedEntry>
-        </Grid>
-
-        <Grid Grid.Row="0" Grid.Column="1">
-            <Button x:Name="Btn1" 
-                            Text="Show/Hide"
-                            Clicked="Btn1_Clicked">
-            </Button>
-
-        </Grid>
+             xmlns:effects="clr-namespace:MauiSoftKeyboard.Effects"
+             x:Class="MauiSoftKeyboard.MainPage">
 
 
-        <Grid Grid.Row="1" Grid.Column="0">
-            <controls:ExtendedEntry x:Name="Entry2"
-                                    Focused="Entry2_Focused"
-                                    Unfocused="entry_Unfocused"
-                                    effects:KeyboardEffect.EnableKeyboard="{Binding Source={x:Reference Entry2}, Path=EnableKeyboard}"
-                                    effects:KeyboardEffect.RequestFocus="True">
-                <Entry.Effects>
-                    <effects:KeyboardEnableEffect />
-                </Entry.Effects>
-            </controls:ExtendedEntry>
-        </Grid>
+    <StackLayout Orientation="Vertical" Spacing="20">
 
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Button x:Name="Btn2" 
-                    Text="Show/Hide"
-                    Clicked="Btn2_Clicked">
-            </Button>
+       <Button x:Name="NonMvvm"
+               Text="Non-MVVM(정상 작동)"
+               Clicked="NonMvvm_Clicked"/>
 
-        </Grid>
+        
+       <Button x:Name="Mvvm"
+               Text="MVVM(운영에 문제가 있음)"
+               Clicked="Mvvm_Clicked"/>
 
-        <Grid Grid.Row="2" Grid.Column="0">
-            <controls:ExtendedEntry x:Name="Entry3"
-                                    Focused="Entry3_Focused"
-                                    Unfocused="entry_Unfocused"
-                                    effects:KeyboardEffect.EnableKeyboard="{Binding Source={x:Reference Entry3}, Path=EnableKeyboard}"
-                                    effects:KeyboardEffect.RequestFocus="True">
-                <Entry.Effects>
-                    <effects:KeyboardEnableEffect />
-                </Entry.Effects>
-            </controls:ExtendedEntry>
-        </Grid>
-
-        <Grid Grid.Row="2" Grid.Column="1">
-            <Button x:Name="Btn3" 
-                    Text="Show/Hide"
-                    Clicked="Btn3_Clicked">
-            </Button>
-        </Grid>
-
-        <Grid Grid.Row="3" Grid.Column="0">
-            <controls:ExtendedEntry x:Name="Entry4"
-                                    Focused="Entry4_Focused"
-                                    Unfocused="entry_Unfocused"
-                                    Placeholder="Show Keyboard"
-                                    effects:KeyboardEffect.EnableKeyboard="True">
-                <Entry.Effects>
-                    <effects:KeyboardEnableEffect />
-                </Entry.Effects>
-            </controls:ExtendedEntry>
-        </Grid>
-
-        <Grid Grid.Row="3" Grid.Column="1">
-            <Button x:Name="Btn4" 
-                    Text="Show/Hide"
-                    Clicked="Btn4_Clicked">
-            </Button>
-        </Grid>
-
-    </Grid>
+    </StackLayout>
+  
 
 
 </ContentPage>

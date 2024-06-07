@@ -13,7 +13,7 @@ public class MainActivity : MauiAppCompatActivity
         base.OnCreate(savedInstanceState);
         Platform.Init(this, savedInstanceState);
 
-        //this.Window.DecorView.ViewTreeObserver.AddOnGlobalLayoutListener(new MauiSoftKeyboard.Droid.Services.SoftKeyboardService());
+        this.Window.DecorView.ViewTreeObserver.AddOnGlobalLayoutListener(new MauiSoftKeyboard.Droid.Services.SoftKeyboardService());
 
 
     }
