@@ -56,8 +56,6 @@ public partial class NewPage2 : ContentPage
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     this.vm.IsEnableKeyboard = false;
-                    _entry.Unfocus();
-                    _entry.Focus();
                 }
             }
             else
@@ -71,8 +69,6 @@ public partial class NewPage2 : ContentPage
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
                     this.vm.IsEnableKeyboard = true;
-                    _entry.Unfocus();
-                    _entry.Focus();
                 }
             }
         }

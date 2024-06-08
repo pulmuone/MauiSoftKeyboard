@@ -11,13 +11,15 @@ namespace MauiSoftKeyboard.Effects
         /// <summary>
         /// Bindable property to Enable keyboard
         /// </summary>
-        public static readonly BindableProperty EnableKeyboardProperty = BindableProperty.Create("EnableKeyboard", typeof(bool), typeof(KeyboardEffect), false, propertyChanged: OnEnableKeyboardChanged);
+        public static readonly BindableProperty EnableKeyboardProperty 
+            = BindableProperty.Create("EnableKeyboard", typeof(bool), typeof(KeyboardEffect), false, propertyChanged: OnEnableKeyboardChanged);
 
         /// <summary>
         /// Bindable property to focus control
         /// 화면 처음에 보여 질때 해당 Entry에 Focus주는 것인데 ViewModel로 개발할 경우 단점이 있기 때문에 Task.Delay(300); Entry.Focus()로 대체 한다.
         /// </summary>
-        public static readonly BindableProperty RequestFocusProperty = BindableProperty.Create("RequestFocus", typeof(bool), typeof(KeyboardEffect), false);
+        public static readonly BindableProperty RequestFocusProperty 
+            = BindableProperty.Create("RequestFocus", typeof(bool), typeof(KeyboardEffect), false);
 
         /// <summary>
         /// Get EnableKeyboard value
