@@ -27,13 +27,7 @@ namespace MauiSoftKeyboard.iOS.Effects
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
                 if (requestFocus)
                 {
-                    DispatchQueue.MainQueue.DispatchAsync(() =>
-                    {
-                        //nativeTextField.UserInteractionEnabled = true;
-                         nativeTextField.BecomeFirstResponder(); //ShowKeyboard
-                        //nativeTextField.ResignFirstResponder(); //HideKeyboard
-                    });
-
+                    nativeTextField.BecomeFirstResponder(); //ShowKeyboard
                 }
             }
             catch (Exception ex)

@@ -76,7 +76,6 @@ public partial class NewPage1 : ContentPage
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     _entry.EnableKeyboard = true;
-                    _entry.Focus();
 
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
