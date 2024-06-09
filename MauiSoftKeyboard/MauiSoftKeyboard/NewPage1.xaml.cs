@@ -68,7 +68,7 @@ public partial class NewPage1 : ContentPage
     {
         if (this._entry != null)
         {
-            if (this._entry.EnableKeyboard)
+            if (this.IsSoftInputShowing)
             {
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {

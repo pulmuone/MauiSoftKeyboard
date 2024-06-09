@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maui;
+using System.Diagnostics;
 
 namespace MauiSoftKeyboard;
 
@@ -19,12 +20,23 @@ public partial class NewPage2 : ContentPage
 
         await Task.Delay(300); // 250이나 300정도해도 작동
         this.Entry1.Focus();
+
+        SoftKeyboard.Current.VisibilityChanged += Current_VisibilityChanged;
     }
 
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
+
+        SoftKeyboard.Current.VisibilityChanged -= Current_VisibilityChanged;
     }
+
+    private void Current_VisibilityChanged(SoftKeyboardEventArgs e)
+    {
+        IsSoftInputShowing = e.IsVisible;
+        Debug.WriteLine($"KeyBoard is visible : {(e.IsVisible ? "Yes" : "No")}");
+    }
+
 
 
     void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
@@ -51,7 +63,6 @@ public partial class NewPage2 : ContentPage
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     this.vm.IsEnableKeyboard = false;
-                    _entry.Unfocus();
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)
                 {
@@ -63,7 +74,6 @@ public partial class NewPage2 : ContentPage
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     this.vm.IsEnableKeyboard = true;
-                    _entry.Focus();
 
                 }
                 else if (DeviceInfo.Platform == DevicePlatform.Android)

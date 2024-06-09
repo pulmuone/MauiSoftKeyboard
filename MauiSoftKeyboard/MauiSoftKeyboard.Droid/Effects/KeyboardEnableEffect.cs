@@ -44,6 +44,8 @@ namespace MauiSoftKeyboard.Droid.Effects
                 var imm = (InputMethodManager)Platform.CurrentActivity?.GetSystemService(Context.InputMethodService);
                 imm?.HideSoftInputFromWindow(Control.WindowToken, HideSoftInputFlags.None);
 
+                SoftKeyboard.Current.InvokeVisibilityChanged(false);
+
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
                 if (requestFocus)
                 {
@@ -95,7 +97,7 @@ namespace MauiSoftKeyboard.Droid.Effects
                 var imm = (InputMethodManager)Platform.CurrentActivity?.GetSystemService(Context.InputMethodService);
                 imm?.ShowSoftInput(Control, ShowFlags.Implicit);
 
-                //SoftKeyboard.Current.InvokeVisibilityChanged(true);
+                SoftKeyboard.Current.InvokeVisibilityChanged(true);
 
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
                 if (requestFocus)
