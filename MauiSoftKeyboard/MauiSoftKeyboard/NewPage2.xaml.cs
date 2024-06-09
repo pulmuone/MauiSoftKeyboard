@@ -58,28 +58,13 @@ public partial class NewPage2 : ContentPage
     {
         if (this._entry != null)
         {
-            if (_entry.IsSoftInputShowing())
+            if (this.IsSoftInputShowing)
             {
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    this.vm.IsEnableKeyboard = false;
-                }
-                else if (DeviceInfo.Platform == DevicePlatform.Android)
-                {
-                    this.vm.IsEnableKeyboard = false;
-                }
+                this.vm.IsEnableKeyboard = false;
             }
             else
             {
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    this.vm.IsEnableKeyboard = true;
-
-                }
-                else if (DeviceInfo.Platform == DevicePlatform.Android)
-                {
-                    this.vm.IsEnableKeyboard = true;
-                }
+                this.vm.IsEnableKeyboard = true;
             }
         }
     }

@@ -15,7 +15,7 @@
 
         
        <Button x:Name="Mvvm"
-               Text="MVVM"
+               Text="MVVM (Error)"
                Clicked="Mvvm_Clicked"/>
 
     </StackLayout>
