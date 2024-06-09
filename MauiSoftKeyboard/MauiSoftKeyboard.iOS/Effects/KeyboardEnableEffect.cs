@@ -27,13 +27,8 @@ namespace MauiSoftKeyboard.iOS.Effects
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
                 if (requestFocus)
                 {
-                    DispatchQueue.MainQueue.DispatchAsync(() =>
-                    {
-                        //nativeTextField.UserInteractionEnabled = true;
-                         nativeTextField.BecomeFirstResponder(); //ShowKeyboard
-                        //nativeTextField.ResignFirstResponder(); //HideKeyboard
-                    });
-
+                    nativeTextField.ResignFirstResponder();
+                    nativeTextField.BecomeFirstResponder(); //ShowKeyboard
                 }
             }
             catch (Exception ex)
@@ -57,8 +52,9 @@ namespace MauiSoftKeyboard.iOS.Effects
                 if (requestFocus)
                 {
                     //nativeTextField.UserInteractionEnabled = true;
+                    nativeTextField.ResignFirstResponder(); //HideKeyboard, 포커스도 아웃됨.
                     nativeTextField.BecomeFirstResponder(); //ShowKeyboard
-                    //nativeTextField.ResignFirstResponder(); //HideKeyboard, 포커스도 아웃됨.
+
                 }
             }
             catch (Exception ex)
