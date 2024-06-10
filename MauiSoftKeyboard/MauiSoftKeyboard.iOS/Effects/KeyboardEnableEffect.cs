@@ -24,6 +24,8 @@ namespace MauiSoftKeyboard.iOS.Effects
                 nativeTextField.InputAssistantItem.LeadingBarButtonGroups = null;
                 nativeTextField.InputAssistantItem.TrailingBarButtonGroups = null;
 
+                SoftKeyboard.Current.InvokeVisibilityChanged(false);
+
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
                 if (requestFocus)
                 {
@@ -49,9 +51,10 @@ namespace MauiSoftKeyboard.iOS.Effects
                 nativeTextField.InputView = null;
                 var requestFocus = KeyboardEffect.GetRequestFocus(Element);
 
+                SoftKeyboard.Current.InvokeVisibilityChanged(true);
+
                 if (requestFocus)
                 {
-                    //nativeTextField.UserInteractionEnabled = true;
                     nativeTextField.ResignFirstResponder(); //HideKeyboard, 포커스도 아웃됨.
                     nativeTextField.BecomeFirstResponder(); //ShowKeyboard
 
