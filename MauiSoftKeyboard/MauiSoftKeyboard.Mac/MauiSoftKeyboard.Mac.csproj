@@ -9,8 +9,11 @@
 		<UseMaui>true</UseMaui>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -20,4 +23,12 @@
 		<ProjectReference Include="..\MauiSoftKeyboard\MauiSoftKeyboard.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <BundleResource Condition="'$(_ResourcePrefix)' != ''" Update="Resources\dotnet_bot_devices%402x.png">
+	    <Link>Resources\dotnet_bot_devices%402x.png</Link>
+	  </BundleResource>
+	  <BundleResource Condition="'$(_ResourcePrefix)' != ''" Update="Resources\dotnet_bot_devices%403x.png">
+	    <Link>Resources\dotnet_bot_devices%403x.png</Link>
+	  </BundleResource>
+	</ItemGroup>
 </Project>

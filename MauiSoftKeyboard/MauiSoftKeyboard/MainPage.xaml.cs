@@ -18,14 +18,14 @@ public partial class MainPage : ContentPage
     {
         NewPage1 page = new NewPage1();
 
-        await this.Navigation.PushAsync(page);
+        await this.Navigation.PushAsync(page, false);
     }
 
     async void Mvvm_Clicked(System.Object sender, System.EventArgs e)
     {
         NewPage2 page = new NewPage2();
 
-        await this.Navigation.PushAsync(page);
+        await this.Navigation.PushAsync(page, false);
     }
 }
 
