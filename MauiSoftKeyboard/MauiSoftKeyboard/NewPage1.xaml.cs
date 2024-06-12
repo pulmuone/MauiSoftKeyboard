@@ -15,12 +15,9 @@ public partial class NewPage1 : ContentPage
         InitializeComponent();
     }
 
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
-
-        await Task.Delay(300); // 250이나 300정도해도 작동
-        this.Entry1.Focus();
 
         SoftKeyboard.Current.VisibilityChanged += Current_VisibilityChanged;
     }

@@ -18,7 +18,7 @@ namespace MauiSoftKeyboard.Effects
         /// Bindable property to focus control
         /// </summary>
         public static readonly BindableProperty RequestFocusProperty 
-            = BindableProperty.Create("RequestFocus", typeof(bool), typeof(KeyboardEffect), true);
+            = BindableProperty.Create("RequestFocus", typeof(bool), typeof(KeyboardEffect), false);
 
         /// <summary>
         /// Get EnableKeyboard value
