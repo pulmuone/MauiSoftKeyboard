@@ -8,8 +8,7 @@ namespace MauiSoftKeyboard
 {
     public class SoftKeyboard
     {
-        private static readonly Lazy<SoftKeyboard> MySingleton =
-            new Lazy<SoftKeyboard>(() => new SoftKeyboard(), LazyThreadSafetyMode.PublicationOnly);
+        private static readonly Lazy<SoftKeyboard> MySingleton = new Lazy<SoftKeyboard>(() => new SoftKeyboard(), LazyThreadSafetyMode.PublicationOnly);
 
         public event SoftKeyboardEventHandler VisibilityChanged;
 
