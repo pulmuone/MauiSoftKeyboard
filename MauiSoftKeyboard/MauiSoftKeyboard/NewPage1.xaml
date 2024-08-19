@@ -30,7 +30,8 @@
             <Grid Grid.Row="0" Grid.Column="0">
                 <!--effects:KeyboardEffect.EnableKeyboard="{Binding Source={x:Reference Entry1}, Path=EnableKeyboard}"-->
                 <controls:ExtendedEntry x:Name="Entry1"
-                                    Focused="Entry1_Focused"     
+                                    Focused="Entry1_Focused"    
+                                    Unfocused="Entry_UnFocus"
                                     ShowVirtualKeyboardOnFocus="True"
                                     effects:KeyboardEffect.RequestFocus="True"
                                     effects:KeyboardEffect.EnableKeyboard="{Binding Source={x:Reference Entry1}, Path=EnableKeyboard}">
@@ -43,6 +44,7 @@
             <Grid Grid.Row="1" Grid.Column="0">
                 <controls:ExtendedEntry x:Name="Entry2"
                                     Focused="Entry2_Focused"
+                                        Unfocused="Entry_UnFocus"
                                     effects:KeyboardEffect.RequestFocus="False"
                                     effects:KeyboardEffect.EnableKeyboard="{Binding Source={x:Reference Entry2}, Path=EnableKeyboard}">
                     <Entry.Effects>

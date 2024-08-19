@@ -98,4 +98,19 @@ public partial class NewPage1 : ContentPage
         //Entry2.ShowKeyboardAsync();
 
     }
+
+    private void Entry_UnFocus(object sender, FocusEventArgs e)
+    {
+        if (this._entry != null)
+        {
+            if (this._entry.IsSoftInputShowing())
+            {
+                Application.Current.Dispatcher.Dispatch(() =>
+                {
+                    //포커스 될때 키보드가 보이게 하려면
+                    this._entry.EnableKeyboard = false;
+                });
+            }
+        }
+    }
 }
